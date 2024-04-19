@@ -2,6 +2,6 @@
 
 @section('content')
   <div>
-    APPLY
+    APPLY ben
   </div>
 @endsection
