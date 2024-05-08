@@ -21,7 +21,7 @@
               @if (1 === 2)
               <ion-icon name="briefcase"></ion-icon>
               @endif
-              <span class="ms-1">Student of Information System</span>
+              <span class="ms-1">Student of Information Systems</span>
             </small>
           </div>
         </div>
