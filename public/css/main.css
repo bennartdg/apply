@@ -1,0 +1,119 @@
+@import url("https://fonts.googleapis.com/css2?family=Lexend+Zetta:wght@100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+html {
+    scroll-behavior: smooth;
+    font-family: "Roboto", sans-serif;
+}
+
+:root {
+    --fs-big: 2.9rem;
+    --fs-1: 1.9rem;
+    --fs-2: 1.6rem;
+    --fs-3: 1.4rem;
+    --fs-4: 1.2rem;
+    --fs-5: 1rem;
+    --fs-6: 0.9rem;
+    --fs-p: 0.8rem;
+    --black: #1e1e1e;
+    --white: #ffffff;
+    --red: #c70101;
+    --near-black: #282828;
+    --white-hover: rgba(100, 100, 100, 0.1);
+    --black-hover: rgba(0, 0, 0, 0.7);
+}
+
+@media (min-width: 45em) {
+    :root {
+        --fs-big: 4.5rem;
+        --fs-1: 3rem;
+        --fs-2: 2.4rem;
+        --fs-3: 2rem;
+        --fs-4: 1.6rem;
+        --fs-5: 1.4rem;
+        --fs-6: 1.1rem;
+        --fs-p: 1rem;
+    }
+}
+
+.text-big {
+    font-size: var(--fs-big);
+    font-weight: 500;
+}
+
+h1 {
+    font-size: var(--fs-1);
+    font-weight: 500;
+}
+
+h2 {
+    font-size: var(--fs-2);
+    font-weight: 500;
+}
+
+h3 {
+    font-size: var(--fs-3);
+    font-weight: 500;
+}
+
+h4 {
+    font-size: var(--fs-4);
+    font-weight: 500;
+}
+
+h5 {
+    font-size: var(--fs-5);
+    font-weight: 500;
+}
+
+h6 {
+    font-size: var(--fs-6);
+    font-weight: 500;
+}
+
+p {
+    font-size: var(--fs-p);
+    font-weight: 400;
+}
+
+.bg-black {
+    background-color: #1e1e1e;
+}
+
+.text-black {
+    color: #1e1e1e;
+}
+
+.btn-black {
+	background-color: #1e1e1e;
+	color: var(--white);
+}
+
+.btn-black:hover {
+	background-color: var(--near-black);
+	color: var(--white);
+}
+
+.bg-near-black {
+    background-color: var(--near-black);
+}
+
+.text-lexend {
+    font-family: "Lexend Zetta", sans-serif;
+    font-weight: 500;
+}
+
+.text-red {
+    color: var(--red);
+}
+
+.bg-red {
+    background-color: var(--red);
+}
+
+.input:focus,
+.input:active {
+    outline: none !important;
+    box-shadow: none;
+		border: 1px solid #1e1e1e;
+}
