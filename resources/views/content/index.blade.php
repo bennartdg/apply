@@ -20,7 +20,8 @@
             <small class="text-muted">Already have an account? <a href="/login"
                 class="btn-link text-decoration-none text-primary">Login</a></small>
           </div>
-          <form action="">
+          <form action="/register" method="POST">
+            @csrf
             <div class="mb-3 row">
               <div class="col-12 col-lg-6">
                 <label for="user_first_name" class="form-label text-secondary">First Name</label>
@@ -35,10 +36,30 @@
               <label for="user_email" class="form-label text-secondary">Email Address</label>
               <input type="email" class="form-control input" id="user_email" name="user_email">
             </div>
-            <div class="mb-3">
-              <label for="user_username" class="form-label text-secondary">Username</label>
-              <input type="email" class="form-control input" id="user_username" name="user_username" value="@">
+            <div class="mb-3 row">
+              <div class="col-12 col-lg-6">
+                <label for="user_username" class="form-label text-secondary">Username</label>
+                <input type="text" class="form-control input" id="user_first_name" name="user_name" value="@">
+              </div>
+              <div class="col-12 col-lg-6">
+                <label for="user_status" class="form-label text-secondary">Status</label>
+                <select class="form-select input" aria-label="Default select example" name="user_status">
+                  <option value="student">Student</option>
+                  <option value="fresh graduate">Fresh Graduate</option>
+                  <option value="experienced">Experienced</option>
+                </select>
+              </div>
             </div>
+            <div class="mb-3 row">
+              <div class="col-12 col-lg-6">
+                <label for="user_city" class="form-label text-secondary">City</label>
+                <input type="text" class="form-control input" id="user_first_name" name="user_city">
+              </div>
+              <div class="col-12 col-lg-6">
+                <label for="user_country" class="form-label text-secondary">Country</label>
+                <input type="text" class="form-control input" id="user_last_name" name="user_country">
+              </div>
+            </div>  
             <div class="mb-3">
               <label for="user_password" class="form-label text-secondary">Password</label>
               <input type="password" class="form-control input" id="user_password" name="user_password">
