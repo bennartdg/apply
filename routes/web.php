@@ -22,8 +22,9 @@ Route::get('/', function () {
 Route::post('/register', [RegisterController::class, 'store'])->middleware('guest');
 
 Route::get('/login', [LoginController::class, 'index'])->middleware('guest');
+Route::post('/login', [LoginController::class, 'authenticate'])->middleware('guest');
 
 Route::get('/home', function () {
     return view('content.home');
-})->middleware('guest');
+})->middleware('auth');
 

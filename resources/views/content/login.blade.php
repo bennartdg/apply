@@ -20,10 +20,32 @@
             <small class="text-muted">Not have an account? <a href="/" class="btn-link text-decoration-none">Create
                 new account</a></small>
           </div>
-          <form action="">
+
+          @if(session()->has('success'))
+          <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{session('success')}}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+          @endif
+          
+          @if(session()->has('loginError'))
+          <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            {{session('loginError ')}}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+          @endif        
+
+          <form action="/login" method="POST">
+            @csrf
             <div class="mb-3">
               <label for="user_email" class="form-label text-secondary">Email address</label>
-              <input type="email" class="form-control input" id="user_email" name="user_email">
+             
+              <input type="email" class="form-control input @error('user_email') is-invalid @enderror" id="user_email" name="user_email">
+              @error('user_email')
+              <div class="invalid-feedback">
+                {{$message}}
+              </div>
+              @enderror
             </div>
             <div class="mb-3">
               <label for="user_password" class="form-label text-secondary">Password</label>
