@@ -24,70 +24,65 @@
             @csrf
             <div class="mb-3 row">
               <div class="col-12 col-lg-6">
-                <label for="user_first_name"
-                  class="form-label @error('user_first_name') text-danger @enderror text-secondary">
+                <label for="first_name" class="form-label @error('first_name') text-danger @enderror text-secondary">
                   First Name
-                  @error('user_first_name')
+                  @error('first_name')
                     <span class="text-danger">*</span>
                   @enderror
                 </label>
-                <input type="text" class="form-control input @error('user_first_name') is-invalid @enderror"
-                  id="user_first_name" name="user_first_name" value="{{ old('user_first_name') }}">
+                <input type="text" class="form-control input @error('first_name') is-invalid @enderror" id="first_name"
+                  name="first_name" value="{{ old('first_name') }}">
               </div>
               <div class="col-12 col-lg-6 mt-3 mt-lg-0">
-                <label for="user_last_name"
-                  class="form-label @error('user_last_name') text-danger @enderror text-secondary">
+                <label for="last_name" class="form-label @error('last_name') text-danger @enderror text-secondary">
                   Last Name
-                  @error('user_last_name')
+                  @error('last_name')
                     <span class="text-danger">*</span>
                   @enderror
                 </label>
-                <input type="text" class="form-control input @error('user_last_name') is-invalid @enderror"
-                  id="user_last_name" name="user_last_name" value="{{ old('user_last_name') }}">
+                <input type="text" class="form-control input @error('last_name') is-invalid @enderror" id="last_name"
+                  name="last_name" value="{{ old('last_name') }}">
               </div>
             </div>
             <div class="mb-3">
-              <label for="user_email" class="form-label @error('user_email') text-danger @enderror text-secondary">
+              <label for="email" class="form-label @error('email') text-danger @enderror text-secondary">
                 Email Address
-                @error('user_email')
+                @error('email')
                   <span class="text-danger">{{ $message }}</span>
                 @enderror
               </label>
-              <input type="email" class="form-control input @error('user_email') is-invalid @enderror" id="user_email"
-                name="user_email" value="{{ old('user_email') }}">
+              <input type="email" class="form-control input @error('email') is-invalid @enderror" id="email"
+                name="email" value="{{ old('email') }}">
             </div>
             <div class="mb-3 row">
               <div class="col-12 col-lg-6">
-                <label for="user_username"
-                  class="form-label text-secondary @error('user_username') text-danger @enderror">
+                <label for="username" class="form-label text-secondary @error('username') text-danger @enderror">
                   Username
-                  @error('user_username')
+                  @error('username')
                     <span class="text-danger">{{ $message }}</span>
                   @enderror
                 </label>
-                <input type="text" class="form-control input @error('user_username') is-invalid @enderror"
-                  id="user_username" name="user_username" value="{{ old('user_username') }}">
+                <input type="text" class="form-control input @error('username') is-invalid @enderror" id="username"
+                  name="username" value="{{ old('username') }}">
               </div>
               <div class="col-12 col-lg-6 mt-3 mt-lg-0">
-                <label for="user_status"
-                  class="form-label @error('user_status') is-invalid @enderror text-secondary">Status
-                  @error('user_status')
+                <label for="status" class="form-label @error('status') is-invalid @enderror text-secondary">Status
+                  @error('status')
                     *
                   @enderror
                 </label>
-                <select class="form-select input @error('user_status') is-invalid @enderror" id="user_status"
-                  name="user_status">
-                  @if (old('user_status') == 'student')
+                <select class="form-select input @error('status') is-invalid @enderror" id="status" name="status">
+                  @if (old('status') == 'student')
                     <option value="student" selected>Student</option>
                   @else
                     <option value="student">Student</option>
                   @endif
-                  @if (old('user_status') == 'fresh graduate')
+                  @if (old('status') == 'fresh graduate')
                     <option value="fresh graduate" selected>Fresh Graduate</option>
                   @else
                     <option value="fresh graduate">Fresh Graduate</option>
                   @endif
-                  @if (old('user_status') == 'experienced')
+                  @if (old('status') == 'experienced')
                     <option value="experienced" selected>Experienced</option>
                   @else
                     <option value="experienced">Experienced</option>
@@ -97,46 +92,45 @@
             </div>
             {{-- <div class="mb-3 row">
               <div class="col-12 col-lg-6">
-                <label for="user_city" class="form-label @error('user_city') text-danger @enderror text-secondary">
+                <label for="city" class="form-label @error('city') text-danger @enderror text-secondary">
                   City
-                  @error('user_city')
+                  @error('city')
                     *
                   @enderror
                 </label>
-                <input type="text" class="form-control input" id="user_city" name="user_city"
-                  value="{{ old('user_city') }}">
+                <input type="text" class="form-control input" id="city" name="city"
+                  value="{{ old('city') }}">
               </div>
               <div class="col-12 col-lg-6 mt-3 mt-lg-0">
-                <label for="user_country"
-                  class="form-label  @error('user_country') text-danger @enderror text-secondary">
+                <label for="country"
+                  class="form-label  @error('country') text-danger @enderror text-secondary">
                   Country
-                  @error('user_country')
+                  @error('country')
                     *
                   @enderror
                 </label>
-                <input type="text" class="form-control input" id="user_country" name="user_country"
-                  value="{{ old('user_country') }}">
+                <input type="text" class="form-control input" id="country" name="country"
+                  value="{{ old('country') }}">
               </div>
             </div> --}}
             <div class="mb-3">
-              <label for="user_password"
-                class="form-label @error('user_password') text-danger @enderror text-secondary">Password
-                @error('user_password')
+              <label for="password" class="form-label @error('password') text-danger @enderror text-secondary">Password
+                @error('password')
                   {{ $message }}
                 @enderror
               </label>
-              <input type="password" class="form-control input @error('user_password') is-invalid @enderror"
-                id="user_password" name="user_password">
+              <input type="password" class="form-control input @error('password') is-invalid @enderror" id="password"
+                name="password">
             </div>
             <div class="mb-4">
-              <label for="user_password_confirm"
-                class="form-label @error('user_password_confirm') text-danger @enderror text-secondary">Confirm Password
-                @error('user_password_confirm')
+              <label for="password_confirm"
+                class="form-label @error('password_confirm') text-danger @enderror text-secondary">Confirm Password
+                @error('password_confirm')
                   {{ $message }}
                 @enderror
               </label>
-              <input type="password" class="form-control input @error('user_password_confirm') is-invalid @enderror"
-                id="user_password_confirm" name="user_password_confirm">
+              <input type="password" class="form-control input @error('password_confirm') is-invalid @enderror"
+                id="password_confirm" name="password_confirm">
             </div>
             <div class="d-flex flex-column my-4">
               <button type="submit" class="btn btn-black">Create account</button>

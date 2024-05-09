@@ -14,16 +14,11 @@ class LoginController extends Controller
 
     public function authenticate(Request $request)
     {
-        $request ['email'] = $request['user_email'];
-        $request ['password'] = $request['user_password'];
         $credentials = $request->validate([
             'email' => 'required|email:dns',
             'password' => 'required',
         ]);
         // dd($credentials);
-
-        // $credentials ['email'] = $credentials ['user_email'];
-        // $credentials ['password'] = $credentials ['user_password'];
 
         if(Auth::attempt($credentials))
         {
@@ -33,6 +28,4 @@ class LoginController extends Controller
         
         return back()->with('loginError', 'login failed!');
     }
-
- 
 }

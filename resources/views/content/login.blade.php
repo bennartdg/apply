@@ -38,18 +38,17 @@
           <form action="/login" method="POST">
             @csrf
             <div class="mb-3">
-              <label for="user_email" class="form-label text-secondary">Email address</label>
-             
-              <input type="email" class="form-control input @error('user_email') is-invalid @enderror" id="user_email" name="user_email">
-              @error('user_email')
+              <label for="email" class="form-label text-secondary">Email address</label>
+              <input type="email" class="form-control input @error('email') is-invalid @enderror" id="email" name="email">
+              @error('email')
               <div class="invalid-feedback">
                 {{$message}}
               </div>
               @enderror
             </div>
             <div class="mb-3">
-              <label for="user_password" class="form-label text-secondary">Password</label>
-              <input type="password" class="form-control input" id="user_password" name="user_password">
+              <label for="password" class="form-label text-secondary">Password</label>
+              <input type="password" class="form-control input" id="password" name="password">
             </div>
             <div class="d-flex flex-column my-4">
               <button type="submit" class="btn btn-black">Login</button>
