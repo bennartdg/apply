@@ -14,8 +14,10 @@
             src="https://miro.medium.com/v2/resize:fill:100:100/1*dmbNkD5D-u45r44go_cf0g.png" width="36"
             height="36" loading="lazy">
           <div class="">
-            <h5>Fahri Aqila Putra</h5>
-            <p class="text-dark-emphasis">@fahriaql</p>
+            @auth
+            <h5>{{ auth()->user()->first_name }} {{ auth()->user()->last_name }}</h5>
+            <p class="text-dark-emphasis">@ {{ auth()->user()->username }}</p>
+            @endauth
             <small class="d-flex align-items-center">
               <ion-icon name="school"></ion-icon>
               @if (1 === 2)
@@ -37,11 +39,15 @@
     </div>
 
     <div class="d-flex">
-      <a href="/" class="btn btn-black d-flex align-items-center">
-        <ion-icon name="log-out-outline"></ion-icon>
-        <span class="ms-1">Logout</span> 
-      </a>
-    </div>
+      <form id="logout-form" action="/logout" method="POST">
+          @csrf
+          <button type="submit" class="btn btn-black d-flex align-items-center">
+              <ion-icon name="log-out-outline"></ion-icon>
+              <span class="ms-1">Logout</span> 
+          </button>
+      </form>
+  </div>
+  
   </div>
 </aside>
 

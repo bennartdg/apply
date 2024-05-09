@@ -9,7 +9,7 @@
     <div class="col-lg-10 col-8">
       {{-- Main Area --}}
       <div class="container-fluid vh-100 py-5">
-        Content Start Here addien
+        
       </div>
     </div>
   </div>
