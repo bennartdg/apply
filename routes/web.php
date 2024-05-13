@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CVController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
@@ -25,7 +26,4 @@ Route::get('/login', [LoginController::class, 'index'])->name('login')->middlewa
 Route::post('/login', [LoginController::class, 'authenticate'])->middleware('guest');
 Route::post('/logout', [LoginController::class, 'logout']);
 
-Route::get('/home', function () {
-    return view('content.home');
-})->middleware('auth');
-
+Route::resource('/cv', CVController::class)->middleware('auth');

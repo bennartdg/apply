@@ -117,3 +117,13 @@ p {
     box-shadow: none;
 		border: 1px solid #1e1e1e;
 }
+
+/* .list-cv {
+    background-color: var(--white);
+    color: var(--black);
+}
+
+.list-cv:hover {
+    background-color: var(--black);
+    color: var(--white);
+} */

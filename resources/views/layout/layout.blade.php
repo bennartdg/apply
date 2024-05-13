@@ -36,7 +36,7 @@
     <title>APPLY</title>
   </head>
 
-  <body class="bg-white">
+  <body class="bg-light">
 
     @yield('content')
 
