@@ -8,9 +8,9 @@
     </div>
     <div class="col-lg-10 col-8">
       {{-- Main Area --}}
-      <div class="container-fluid pt-4">
+      <div class="container-fluid mt-4">
         <div class="d-flex justify-content-between align-items-center">
-          <h1>My CV</h1>
+          <h1 class="m-0">My CV</h1>
           <div>
             <button class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#add_cv_modal"><i
                 class="fa-regular fa-plus"></i> Add CV</button>

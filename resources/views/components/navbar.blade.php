@@ -10,9 +10,6 @@
       </div>
       <div class="pt-5">
         <div class="d-flex flex-column gap-3">
-          <img class="rounded-circle img-fluid"
-            src="https://miro.medium.com/v2/resize:fill:100:100/1*dmbNkD5D-u45r44go_cf0g.png" width="36"
-            height="36" loading="lazy">
           <div class="">
             <h5>{{ auth()->user()->first_name }} {{ auth()->user()->last_name }}</h5>
             <p class="text-dark-emphasis">{{ auth()->user()->username }}</p>
@@ -31,17 +28,35 @@
             <ion-icon name="location"></ion-icon>
             <span class="ms-1">Bandung, Indonesia</span>
           </small>
-
         </div>
       </div>
     </div>
 
     <div class="d-flex">
-      <button type="button" class="btn btn-black d-flex align-items-center" data-bs-toggle="modal"
-        data-bs-target="#logout_modal">
-        <ion-icon name="log-out-outline"></ion-icon>
-        <span class="ms-1">Logout</span>
-      </button>
+      <div class="btn-group bg-black dropup">
+        <a class="btn bg-black btn-black dropdown-toggle" href="#" data-bs-toggle="dropdown"
+          aria-expanded="false">
+          <img class="rounded-circle img-fluid"
+          src="https://miro.medium.com/v2/resize:fill:100:100/1*dmbNkD5D-u45r44go_cf0g.png" width="36"
+          height="36" loading="lazy">
+        </a>
+        <ul class="dropdown-menu bg-near-black mb-3">
+          <li>
+            <button type="button" class="btn btn-link link-light text-decoration-none d-flex align-items-center" data-bs-toggle="modal"
+              data-bs-target="#edit_profile_modal">
+              <ion-icon name="person-outline"></ion-icon>
+              <span class="ms-1">Edit Profile</span>
+            </button>
+          </li>
+          <li class="border-top border-secondary">
+            <button type="button" class="btn btn-link link-light text-decoration-none d-flex align-items-center" data-bs-toggle="modal"
+              data-bs-target="#logout_modal">
+              <ion-icon name="log-out-outline"></ion-icon>
+              <span class="ms-1">Logout</span>
+            </button>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 </aside>
