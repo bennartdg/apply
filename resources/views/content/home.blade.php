@@ -13,7 +13,7 @@
           <h1 class="m-0">My CV</h1>
           <div>
             <button class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#add_cv_modal"><i
-                class="fa-regular fa-plus"></i> Add CV</button>
+                class="fa-regular fa-plus"></i>Add CV</button>
           </div>
         </div>
         <div class="border border-bottom border-black mt-4"></div>
@@ -23,41 +23,19 @@
         {{-- <p>No CV has been created yet!</p> --}}
         {{-- Else --}}
         <div class="row">
-          {{-- @foreach ($collection as $item) --}}
+          @foreach ($cvs as $cv)
           <div class="col-12 col-lg-4 text-decoration-none mb-4">
             <div class="card p-2 rounded-4">
               <div class="rounded-3 bg-secondary-subtle px-3 py-4">
-                <small class="bg-white px-2 py-1 rounded-5 fw-semibold">13 May 2024</small>
-                <h4 class="my-3">Nama CV</h4>
+                <small class="bg-white px-2 py-1 rounded-5 fw-semibold">{{$cv->created_at->diffForHumans()}}</small>
+                <h4 class="my-3">{{$cv->cv_name}}</h4>
               </div>
               <div class="d-flex justify-content-end mt-3">
-                <a href="" class="btn btn-black rounded-3">Detail</a>
+                <a href="/cv/{{$cv->id}}" class="btn btn-black rounded-3">Detail</a>
               </div>
             </div>
           </div>
-          <div class="col-12 col-lg-4 text-decoration-none mb-4">
-            <div class="card p-2 rounded-4">
-              <div class="rounded-3 bg-secondary-subtle px-3 py-4">
-                <small class="bg-white px-2 py-1 rounded-5 fw-semibold">13 May 2024</small>
-                <h4 class="my-3">Nama CV</h4>
-              </div>
-              <div class="d-flex justify-content-end mt-3">
-                <a href="" class="btn btn-black rounded-3">Detail</a>
-              </div>
-            </div>
-          </div>
-          <div class="col-12 col-lg-4 text-decoration-none mb-4">
-            <div class="card p-2 rounded-4">
-              <div class="rounded-3 bg-secondary-subtle px-3 py-4">
-                <small class="bg-white px-2 py-1 rounded-5 fw-semibold">13 May 2024</small>
-                <h4 class="my-3">Nama CV</h4>
-              </div>
-              <div class="d-flex justify-content-end mt-3">
-                <a href="" class="btn btn-black rounded-3">Detail</a>
-              </div>
-            </div>
-          </div>
-          {{-- @endforeach --}}
+          @endforeach
         </div>
         {{-- End If --}}
       </div>
@@ -79,7 +57,7 @@
                 Enter the name of your CV to make it easier for you to differentiate your CV from one another.
               </p>
             </div>
-            <form action="#" method="POST" autocomplete="off">
+            <form action="/cv" method="POST" autocomplete="off">
               @csrf
               <div class="">
                 <div class="mb-3">

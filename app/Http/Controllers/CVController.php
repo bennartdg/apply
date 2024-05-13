@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\CV;
 use App\Http\Requests\StoreCVRequest;
 use App\Http\Requests\UpdateCVRequest;
+use Illuminate\Http\Request;
 
 class CVController extends Controller
 {
@@ -15,7 +16,9 @@ class CVController extends Controller
      */
     public function index()
     {
-        return view('content.home');
+        return view('content.home', [
+            'cvs' => CV::where('user_id', auth()->user()->id)->get()
+        ]);
     }
 
     /**
@@ -34,20 +37,27 @@ class CVController extends Controller
      * @param  \App\Http\Requests\StoreCVRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreCVRequest $request)
+    public function store(Request $request)
     {
-        //
+        $validateData = $request->validate([
+            'cv_name' => 'required|max:255'
+        ]);
+
+        $validateData ['user_id'] = auth()->user()->id;
+        
+        CV::create($validateData);
+        return redirect('/cv')->with('success', 'New CV has been created!');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\CV  $cV
+     * @param  \App\Models\CV  $cv
      * @return \Illuminate\Http\Response
      */
-    public function show(CV $cV)
+    public function show(CV $cv)
     {
-        //
+        return['cv' => $cv];
     }
 
     /**

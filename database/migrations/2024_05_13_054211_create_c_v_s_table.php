@@ -13,7 +13,7 @@ class CreateCVSTable extends Migration
      */
     public function up()
     {
-        Schema::create('cv', function (Blueprint $table) {
+        Schema::create('c_v_s', function (Blueprint $table) {
             $table->id();
             $table->string('cv_name');
             $table->string('professional_section_name')->nullable();
