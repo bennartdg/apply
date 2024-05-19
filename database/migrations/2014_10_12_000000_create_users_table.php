@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 class CreateUsersTable extends Migration
@@ -27,6 +28,17 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->timestamps();
         });
+
+        DB::table('users')->insert(
+            array(
+                'first_name' => 'Bennart',
+                'last_name' => 'Dem Gunawan',
+                'email' => 'bennart.dgunawan@gmail.com',
+                'password' => '$2y$10$1CR8g9EDPtb8ySifGq1fa.axUVJTxaDqBrLUyDziywrZ1aPoQWmA6',
+                'username' => 'bennartdg',
+                'status' => 'student',
+            )
+        );
     }
 
     /**

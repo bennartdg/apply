@@ -16,9 +16,7 @@ class CVController extends Controller
      */
     public function index()
     {
-        return view('content.home', [
-            'cvs' => CV::where('user_id', auth()->user()->id)->get()
-        ]);
+
     }
 
     /**
@@ -43,10 +41,10 @@ class CVController extends Controller
             'cv_name' => 'required|max:255'
         ]);
 
-        $validateData ['user_id'] = auth()->user()->id;
-        
+        $validateData['user_id'] = auth()->user()->id;
+
         CV::create($validateData);
-        return redirect('/cv')->with('success', 'New CV has been created!');
+        return redirect('/home')->with('success', 'New CV has been created!');
     }
 
     /**
@@ -57,7 +55,11 @@ class CVController extends Controller
      */
     public function show(CV $cv)
     {
-        return['cv' => $cv];
+        if (auth()->user()->id == $cv->user_id) {
+            return view('content.editor', ['cv' => $cv]);
+        }
+
+        return redirect('/home')->with('success', 'CV not found!');
     }
 
     /**
@@ -78,9 +80,45 @@ class CVController extends Controller
      * @param  \App\Models\CV  $cV
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateCVRequest $request, CV $cV)
+    public function update(Request $request, $id)
     {
-        //
+        $validateData = $request->validate([
+            'professional_section_name' => 'required',
+        ]);
+
+        CV::where('id', $id)->update($validateData);
+
+        return redirect('/cv/' . $id . '#professional')->with('success', 'Section name changed!');
+    }
+    public function updateEducation(Request $request, $id)
+    {
+        $validateData = $request->validate([
+            'education_section_name' => 'required',
+        ]);
+
+        CV::where('id', $id)->update($validateData);
+
+        return redirect('/cv/' . $id . '#education')->with('success', 'Section name changed!');
+    }
+    public function updateOrganisation(Request $request, $id)
+    {
+        $validateData = $request->validate([
+            'organisation_section_name' => 'required',
+        ]);
+
+        CV::where('id', $id)->update($validateData);
+
+        return redirect('/cv/' . $id . '#organisation')->with('success', 'Section name changed!');
+    }
+    public function updateOther(Request $request, $id)
+    {
+        $validateData = $request->validate([
+            'other_section_name' => 'required',
+        ]);
+
+        CV::where('id', $id)->update($validateData);
+
+        return redirect('/cv/' . $id . '#other')->with('success', 'Section name changed!');
     }
 
     /**
@@ -92,5 +130,12 @@ class CVController extends Controller
     public function destroy(CV $cV)
     {
         //
+    }
+
+    public function home()
+    {
+        return view('content.home', [
+            'cvs' => CV::where('user_id', auth()->user()->id)->orderBy('created_at', 'desc')->get()
+        ]);
     }
 }

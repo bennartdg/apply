@@ -21,30 +21,20 @@
                 new account</a></small>
           </div>
 
-          @if(session()->has('success'))
-          <div class="alert alert-success alert-dismissible fade show" role="alert">
-            {{session('success')}}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-          </div>
+          @if (session()->has('success'))
+            @include('components.alert', ['message' => session('success')])
           @endif
-          
-          @if(session()->has('loginError'))
-          <div class="alert alert-danger alert-dismissible fade show" role="alert">
-            {{session('loginError ')}}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-          </div>
-          @endif        
+
+          @if (session()->has('loginError'))
+            @include('components.alert', ['message' => session('loginError')])
+          @endif
 
           <form action="/login" method="POST">
             @csrf
             <div class="mb-3">
-              <label for="email" class="form-label text-secondary">Email address</label>
-              <input type="email" class="form-control input @error('email') is-invalid @enderror" id="email" name="email">
-              @error('email')
-              <div class="invalid-feedback">
-                {{$message}}
-              </div>
-              @enderror
+              <label for="email" class="form-label text-secondary">Email address @error('email') <div class="invalid-feedback">{{ $message }}</div>@enderror</label>
+              <input type="email" class="form-control input @error('email') is-invalid @enderror" id="email"
+                name="email" value="{{ old('email') }}">
             </div>
             <div class="mb-3">
               <label for="password" class="form-label text-secondary">Password</label>
