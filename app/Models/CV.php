@@ -32,4 +32,12 @@ class CV extends Model
     {
         return $this->hasMany(Education::class);
     }
+    public function organisation()
+    {
+        return $this->hasMany(Organisation::class);
+    }
+    public function other()
+    {
+        return $this->hasMany(Other::class);
+    }
 }

@@ -39,6 +39,17 @@ class CreateUsersTable extends Migration
                 'status' => 'student',
             )
         );
+
+        DB::table('users')->insert(
+            array(
+                'first_name' => 'R Moh Fahri',
+                'last_name' => 'Aqila Putra',
+                'email' => 'fahri@gmail.com',
+                'password' => '$2y$10$PwmLo7zlZqZz4jbAR.grCeDf7/8eRWyeMy0.YyTaukVKDy926HKEy',
+                'username' => 'fahrikun',
+                'status' => 'student',
+            )
+        );
     }
 
     /**

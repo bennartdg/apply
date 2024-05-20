@@ -6,7 +6,10 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PersonalController;
 use App\Http\Controllers\ProfessionalController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\OrganisationController;
+use App\Http\Controllers\OtherController;
 use App\Models\CV;
+use App\Models\Other;
 use App\Models\Professional;
 use Illuminate\Support\Facades\Route;
 
@@ -42,3 +45,5 @@ Route::put('/cv/other/{id}', [CVController::class, 'updateOther'])->middleware('
 Route::resource('/personal', PersonalController::class)->middleware('auth');
 Route::resource('/professional', ProfessionalController::class)->middleware('auth');
 Route::resource('/education', EducationController::class)->middleware('auth');
+Route::resource('/organisational', OrganisationController::class)->middleware('auth');
+Route::resource('/other', OtherController::class)->middleware('auth');
