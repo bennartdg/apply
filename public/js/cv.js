@@ -477,6 +477,18 @@ $(document).ready(function () {
         );
     });
 
+    $("#btn_education_add").click(function () {
+        $("#education_add").removeAttr("hidden");
+        $("#education_new").removeAttr("hidden");
+        $(this).attr("hidden", true);
+    });
+
+    $("#btn_education_remove").click(function () {
+        $("#btn_education_add").removeAttr("hidden");
+        $("#education_add").attr("hidden", true);
+        $("#education_new").attr("hidden", true);
+    });
+
     // Organisation Section
     loadPreviewSection(
         "#organisation_section_name",
@@ -563,6 +575,18 @@ $(document).ready(function () {
         );
     });
 
+    $("#btn_organisation_add").click(function () {
+        $("#organisation_add").removeAttr("hidden");
+        $("#organisation_new").removeAttr("hidden");
+        $(this).attr("hidden", true);
+    });
+
+    $("#btn_organisation_remove").click(function () {
+        $("#btn_organisation_add").removeAttr("hidden");
+        $("#organisation_add").attr("hidden", true);
+        $("#organisation_new").attr("hidden", true);
+    });
+
     // Other Section
     loadPreviewSection(
         "#other_section_name",
@@ -589,5 +613,17 @@ $(document).ready(function () {
 
     $("#activity_elaboration").on("input", function () {
         loadPreview("#activity_elaboration", "#preview_activity_elaboration");
+    });
+
+    $("#btn_other_add").click(function () {
+        $("#other_add").removeAttr("hidden");
+        $("#other_new").removeAttr("hidden");
+        $(this).attr("hidden", true);
+    });
+
+    $("#btn_other_remove").click(function () {
+        $("#btn_other_add").removeAttr("hidden");
+        $("#other_add").attr("hidden", true);
+        $("#other_new").attr("hidden", true);
     });
 });

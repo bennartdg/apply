@@ -35,7 +35,7 @@ class OrganisationController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
+        $validateData = $request->validate([
             'organisation_name' => 'required|max:255',
             'position_title' => 'required|max:255',
             'organisation_description' => 'nullable',
@@ -50,7 +50,7 @@ class OrganisationController extends Controller
         ]);
 
         if (!($request->has('currently_active'))) {
-            $validateData['ccurrently_active'] = 0;
+            $validateData['currently_active'] = 0;
         } 
 
         $validateData['c_v_id'] = (int) $validateData['c_v_id'];

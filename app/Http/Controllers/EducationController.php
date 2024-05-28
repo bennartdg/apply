@@ -35,6 +35,7 @@ class EducationController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request);
         $validateData = $request->validate([
             'school_name' => 'required|max:255',
             'school_location' => 'required|max:255',
@@ -43,10 +44,10 @@ class EducationController extends Controller
             'education_end_month' => 'nullable|max:3',
             'education_end_year' => 'nullable|max:4',
             'education_level' => 'required|max:255',
-            'education_description' => 'required',
+            'education_description' => 'required|max:255',
             'gpa' => 'required|max:6',
             'max_gpa' => 'required|max:6',
-            'education_achievment' => 'required',
+            'education_achievement' => 'required',
             'c_v_id' => 'required',
         ]);
 
@@ -97,10 +98,10 @@ class EducationController extends Controller
             'education_end_month' => 'nullable|max:3',
             'education_end_year' => 'nullable|max:4',
             'education_level' => 'required|max:255',
-            'education_description' => 'required',
+            'education_description' => 'required|max:255',
             'gpa' => 'required|max:6',
             'max_gpa' => 'required|max:6',
-            'education_achievment' => 'required',
+            'education_achievement' => 'required',
             'c_v_id' => 'required',
         ]);
 

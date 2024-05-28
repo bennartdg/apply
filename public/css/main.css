@@ -102,6 +102,16 @@ p {
     color: var(--white);
 }
 
+.btn-outline-black {
+    border: #1e1e1e solid 1px;
+}
+
+.btn-outline-black:hover {
+    border: #1e1e1e solid 1px;
+    background-color: var(--secondary-subtle);
+    color: var(--black);
+}
+
 .bg-near-black {
     background-color: var(--near-black);
 }
@@ -134,6 +144,10 @@ p {
 
 .cv-preview {
     font-family: Arial, Helvetica, sans-serif !important;
+    /* background-color: #c70101; */
+    /* background-color: #c70101; */
+    /* border-bottom: 1px dashed #d4d5d7;
+    height: 830px; */
 }
 
 .tabs {

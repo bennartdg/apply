@@ -46,7 +46,7 @@
           </form>
         </div>
         <div>
-          <p>Copyright &copy; 2024 Konohachi-dev</p>
+          <p>Copyright &copy; 2024 Apply-dev</p>
         </div>
       </section>
     </div>

@@ -20,9 +20,9 @@ class CreateCVSTable extends Migration
             $table->string('education_section_name')->nullable();
             $table->string('organisation_section_name')->nullable();
             $table->string('other_section_name')->nullable();
-            $table->integer('user_id');
+            $table->foreignId('user_id');
+            $table->integer('export_count')->default(0);
             $table->timestamps();
-            
         });
     }
 

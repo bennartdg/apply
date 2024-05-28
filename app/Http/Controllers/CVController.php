@@ -5,6 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\CV;
 use App\Http\Requests\StoreCVRequest;
 use App\Http\Requests\UpdateCVRequest;
+use App\Models\Education;
+use App\Models\Other;
+use App\Models\Personal;
+use App\Models\Professional;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 
 class CVController extends Controller
@@ -41,6 +46,10 @@ class CVController extends Controller
             'cv_name' => 'required|max:255'
         ]);
 
+        $validateData['professional_section_name'] = 'Work Experiences';
+        $validateData['education_section_name'] = 'Education Level';
+        $validateData['organisation_section_name'] = 'Organisational Experiences';
+        $validateData['other_section_name'] = 'Skills, Achievements & Other Experience';
         $validateData['user_id'] = auth()->user()->id;
 
         CV::create($validateData);
@@ -124,12 +133,33 @@ class CVController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\CV  $cV
+     * @param  \App\Models\CV  $cv
      * @return \Illuminate\Http\Response
      */
-    public function destroy(CV $cV)
+    public function destroy(CV $cv)
     {
-        //
+        if ($cv->personal) {
+            Personal::destroy($cv->personal->id);
+        }
+        if ($cv->professional->count() > 0) {
+            foreach ($cv->professional as $professional) {
+                Professional::destroy($professional->id);
+            }
+        }
+        if ($cv->education->count() > 0) {
+            foreach ($cv->education as $education) {
+                Education::destroy($education->id);
+            }
+        }
+        if ($cv->other->count() > 0) {
+            foreach ($cv->other as $other) {
+                Other::destroy($other->id);
+            }
+        }
+
+        CV::destroy($cv->id);
+
+        return redirect('/home')->with('success', 'Your CV has been removed!');
     }
 
     public function home()
@@ -137,5 +167,28 @@ class CVController extends Controller
         return view('content.home', [
             'cvs' => CV::where('user_id', auth()->user()->id)->orderBy('created_at', 'desc')->get()
         ]);
+    }
+
+    public function export($id)
+    {
+        $cv = CV::find($id);
+        
+        $update['export_count'] = $cv->export_count + 1;
+        
+        CV::where('id', $cv->id)->update($update);
+
+        $pdf = Pdf::loadView('content.show', compact('cv'));
+
+        return $pdf->download(auth()->user()->username . "-" . $cv->cv_name . ".pdf");
+    }
+    
+    public function share($id)
+    {
+        $cv = CV::find($id);
+
+        $pdf = Pdf::loadView('content.show', compact('cv'));
+        return $pdf->stream();
+
+        return view('content.shared', ['cv' => $cv]);
     }
 }

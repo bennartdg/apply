@@ -90,29 +90,7 @@
                 </select>
               </div>
             </div>
-            {{-- <div class="mb-3 row">
-              <div class="col-12 col-lg-6">
-                <label for="city" class="form-label @error('city') text-danger @enderror text-secondary">
-                  City
-                  @error('city')
-                    *
-                  @enderror
-                </label>
-                <input type="text" class="form-control input" id="city" name="city"
-                  value="{{ old('city') }}">
-              </div>
-              <div class="col-12 col-lg-6 mt-3 mt-lg-0">
-                <label for="country"
-                  class="form-label  @error('country') text-danger @enderror text-secondary">
-                  Country
-                  @error('country')
-                    *
-                  @enderror
-                </label>
-                <input type="text" class="form-control input" id="country" name="country"
-                  value="{{ old('country') }}">
-              </div>
-            </div> --}}
+            
             <div class="mb-3">
               <label for="password" class="form-label @error('password') text-danger @enderror text-secondary">Password
                 @error('password')
@@ -138,7 +116,7 @@
           </form>
         </div>
         <div>
-          <p>Copyright &copy; 2024 Konohachi-dev</p>
+          <p>Copyright &copy; 2024 Apply-dev</p>
         </div>
       </section>
     </div>

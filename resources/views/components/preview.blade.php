@@ -141,32 +141,90 @@
       <h6 class="fw-bold m-0 mb-1" id="preview_education_section_name"></h6>
     </div>
     {{-- foreach --}}
-    <div class="text-small">
-      <div class="d-flex justify-content-between">
-        <small>
-          <span class="fw-bold" id="preview_school_name"></span>
-          <span class="text-secondary" id="preview_school_location"></span>
-        </small>
-        <small>
-          <span id="preview_education_start_month"></span>
-          <span id="preview_education_start_year"></span>
-          <span id="preview_education_end_month"></span>
-          <span id="preview_education_end_year"></span>
-        </small>
-      </div>
-      <div class="fst-italic">
-        <small>
-          <span id="preview_education_level"></span>
-          <span id="preview_education_description"></span>
-          <span id="preview_gpa"></span><span id="preview_max_gpa"></span>
-        </small>
-      </div>
-      <div>
-        <ul class="ps-3" id="preview_education_achievement">
+    @if ($cv->education->count() > 0)
+      @foreach ($cv->education as $education)
+        <div class="text-small">
+          <div class="d-flex justify-content-between">
+            <small>
+              <span class="fw-bold" id="preview_school_name_{{ $education->id }}"></span>
+              <span class="text-secondary" id="preview_school_location_{{ $education->id }}"></span>
+            </small>
+            <small>
+              <span id="preview_education_start_month_{{ $education->id }}"></span>
+              <span id="preview_education_start_year_{{ $education->id }}"></span>
+              <span id="preview_education_end_month_{{ $education->id }}"></span>
+              <span id="preview_education_end_year_{{ $education->id }}"></span>
+            </small>
+          </div>
+          <div class="fst-italic">
+            <small>
+              <span id="preview_education_level_{{ $education->id }}"></span>
+              <span id="preview_education_description_{{ $education->id }}"></span>
+              <span id="preview_gpa_{{ $education->id }}"></span><span
+                id="preview_max_gpa_{{ $education->id }}"></span>
+            </small>
+          </div>
+          <div>
+            <ul class="ps-3" id="preview_education_achievement_{{ $education->id }}">
 
-        </ul>
+            </ul>
+          </div>
+        </div>
+      @endforeach
+      <div class="text-small" id="education_new" hidden>
+        <div class="d-flex justify-content-between">
+          <small>
+            <span class="fw-bold" id="preview_school_name"></span>
+            <span class="text-secondary" id="preview_school_location"></span>
+          </small>
+          <small>
+            <span id="preview_education_start_month"></span>
+            <span id="preview_education_start_year"></span>
+            <span id="preview_education_end_month"></span>
+            <span id="preview_education_end_year"></span>
+          </small>
+        </div>
+        <div class="fst-italic">
+          <small>
+            <span id="preview_education_level"></span>
+            <span id="preview_education_description"></span>
+            <span id="preview_gpa"></span><span id="preview_max_gpa"></span>
+          </small>
+        </div>
+        <div>
+          <ul class="ps-3" id="preview_education_achievement">
+
+          </ul>
+        </div>
       </div>
-    </div>
+    @else
+      <div class="text-small">
+        <div class="d-flex justify-content-between">
+          <small>
+            <span class="fw-bold" id="preview_school_name"></span>
+            <span class="text-secondary" id="preview_school_location"></span>
+          </small>
+          <small>
+            <span id="preview_education_start_month"></span>
+            <span id="preview_education_start_year"></span>
+            <span id="preview_education_end_month"></span>
+            <span id="preview_education_end_year"></span>
+          </small>
+        </div>
+        <div class="fst-italic">
+          <small>
+            <span id="preview_education_level"></span>
+            <span id="preview_education_description"></span>
+            <span id="preview_gpa"></span><span id="preview_max_gpa"></span>
+          </small>
+        </div>
+        <div>
+          <ul class="ps-3" id="preview_education_achievement">
+
+          </ul>
+        </div>
+      </div>
+    @endif
     {{-- endforeach --}}
   </section>
 
@@ -175,29 +233,74 @@
     <div class="border-bottom border-black border-2">
       <h6 class="fw-bold m-0 mb-1" id="preview_organisation_section_name"></h6>
     </div>
-    {{-- foreach --}}
-    <div class="text-small">
-      <div class="d-flex justify-content-between">
-        <small>
-          <span class="fw-bold" id="preview_organisation_name"></span>
-          <span class="text-secondary" id="preview_organisation_location"></span>
-        </small>
-        <small>
-          <span id="preview_organisation_start_month"></span>
-          <span id="preview_organisation_start_year"></span>
-          <span id="preview_organisation_end_month"></span>
-          <span id="preview_organisation_end_year"></span>
-        </small>
+    @if ($cv->organisation->count() > 0)
+      @foreach ($cv->organisation as $organisation)
+        <div class="text-small">
+          <div class="d-flex justify-content-between">
+            <small>
+              <span class="fw-bold" id="preview_organisation_name_{{ $organisation->id }}"></span>
+              <span class="text-secondary" id="preview_organisation_location_{{ $organisation->id }}"></span>
+            </small>
+            <small>
+              <span id="preview_organisation_start_month_{{ $organisation->id }}"></span>
+              <span id="preview_organisation_start_year_{{ $organisation->id }}"></span>
+              <span id="preview_organisation_end_month_{{ $organisation->id }}"></span>
+              <span id="preview_organisation_end_year_{{ $organisation->id }}"></span>
+            </small>
+          </div>
+          <div class="fst-italic">
+            <small id="preview_position_title_{{ $organisation->id }}"></small>
+          </div>
+          <div class="text-secondary" id="preview_organisation_description_{{ $organisation->id }}"></div>
+          <div>
+            <ul class="ps-3" id="preview_role_description_{{ $organisation->id }}"></ul>
+          </div>
+        </div>
+      @endforeach
+      <div class="text-small" id="organisation_new">
+        <div class="d-flex justify-content-between">
+          <small>
+            <span class="fw-bold" id="preview_organisation_name"></span>
+            <span class="text-secondary" id="preview_organisation_location"></span>
+          </small>
+          <small>
+            <span id="preview_organisation_start_month"></span>
+            <span id="preview_organisation_start_year"></span>
+            <span id="preview_organisation_end_month"></span>
+            <span id="preview_organisation_end_year"></span>
+          </small>
+        </div>
+        <div class="fst-italic">
+          <small id="preview_position_title"></small>
+        </div>
+        <div class="text-secondary" id="preview_organisation_description"></div>
+        <div>
+          <ul class="ps-3" id="preview_role_description"></ul>
+        </div>
       </div>
-      <div class="fst-italic">
-        <small id="preview_position_title"></small>
+    @else
+      <div class="text-small">
+        <div class="d-flex justify-content-between">
+          <small>
+            <span class="fw-bold" id="preview_organisation_name"></span>
+            <span class="text-secondary" id="preview_organisation_location"></span>
+          </small>
+          <small>
+            <span id="preview_organisation_start_month"></span>
+            <span id="preview_organisation_start_year"></span>
+            <span id="preview_organisation_end_month"></span>
+            <span id="preview_organisation_end_year"></span>
+          </small>
+        </div>
+        <div class="fst-italic">
+          <small id="preview_position_title"></small>
+        </div>
+        <div class="text-secondary" id="preview_organisation_description"></div>
+        <div>
+          <ul class="ps-3" id="preview_role_description"></ul>
+        </div>
       </div>
-      <div class="text-secondary" id="preview_organisation_description"></div>
-      <div>
-        <ul class="ps-3" id="preview_role_description"></ul>
-      </div>
-    </div>
-    {{-- endforeach --}}
+    @endif
   </section>
 
   <section id="other" class="d-flex flex-column gap-1">
@@ -208,11 +311,26 @@
       <div>
         <ul class="ps-3">
           {{-- foreach --}}
-          <li>
-            <span class="fw-bold" id="preview_activity_name"></span>
-            <span id="preview_activity_year"></span>
-            <span id="preview_activity_elaboration"></span>
-          </li>
+          @if ($cv->other->count() > 0)
+            @foreach ($cv->other as $other)
+              <li>
+                <span class="fw-bold" id="preview_activity_name_{{ $other->id }}"></span>
+                <span id="preview_activity_year_{{ $other->id }}"></span>
+                <span id="preview_activity_elaboration_{{ $other->id }}"></span>
+              </li>
+            @endforeach
+            <li id="other_new" hidden>
+              <span class="fw-bold" id="preview_activity_name"></span>
+              <span id="preview_activity_year"></span>
+              <span id="preview_activity_elaboration"></span>
+            </li>
+          @else
+            <li>
+              <span class="fw-bold" id="preview_activity_name"></span>
+              <span id="preview_activity_year"></span>
+              <span id="preview_activity_elaboration"></span>
+            </li>
+          @endif
           {{-- endforeach --}}
         </ul>
       </div>

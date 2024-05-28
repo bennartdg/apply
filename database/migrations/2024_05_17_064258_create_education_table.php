@@ -25,7 +25,7 @@ class CreateEducationTable extends Migration
             $table->string('education_description');
             $table->string('gpa')->nullable();
             $table->string('max_gpa')->nullable();
-            $table->text('education_achievment');
+            $table->text('education_achievement');
             $table->foreignId('c_v_id');
             $table->foreignId('user_id');
             $table->timestamps();

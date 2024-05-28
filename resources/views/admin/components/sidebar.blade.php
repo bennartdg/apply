@@ -5,7 +5,7 @@
         <img src="/asset/logo/APPLY-white.png" alt="" class="img-fluid">
         <p>
           <span class="text-dark-emphasis">for</span>
-          <span id="changing-text">building CV</span>
+          <span>Admin</span>
         </p>
       </div>
       <div class="pt-5">
@@ -13,23 +13,9 @@
           <div class="">
             <h5 class="">{{ auth()->user()->first_name }} {{ auth()->user()->last_name }}</h5>
             <p class="text-dark-emphasis">{{ '@' . auth()->user()->username }}</p>
-            <small class="d-flex align-items-center">
-              @if (auth()->user()->status == 'experienced')
-                <ion-icon name="briefcase"></ion-icon>
-              @else
-                <ion-icon name="school"></ion-icon>
-              @endif
-              <span class="ms-1 text-capitalize">{{ auth()->user()->status }}</span>
-            </small>
           </div>
         </div>
         <hr>
-        <div class="">
-          <small class="d-flex align-items-center">
-            <ion-icon name="location"></ion-icon>
-            <span class="ms-1"></span>
-          </small>
-        </div>
         <div class="d-flex flex-column mt-4">
           <button class="btn btn-black" data-bs-toggle="modal" data-bs-target="#edit_profile_modal">Edit
             Profile</button>
@@ -79,7 +65,7 @@
             <div class="d-flex justify-content-end">
               <button type="button" class="btn btn-outline-black px-5" data-bs-dismiss="modal"
                 aria-label="Close">Cancel</button>
-              <button type="submit" class="btn btn-black ms-2 px-5">
+              <button type="submit" class="btn btn-dark ms-2 px-5">
                 Logout
               </button>
             </div>
@@ -199,22 +185,3 @@
     </div>
   </div>
 </div>
-
-<script>
-  const textArray = [
-    "building CV",
-    "get a job",
-    "your future",
-    "you"
-  ];
-  let currentIndex = 0;
-
-  function changeText() {
-    $("#changing-text").text(textArray[currentIndex]);
-    currentIndex = (currentIndex + 1) % textArray.length;
-  }
-
-  $(document).ready(function() {
-    setInterval(changeText, 2000);
-  });
-</script>

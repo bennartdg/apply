@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CVController;
 use App\Http\Controllers\EducationController;
 use App\Http\Controllers\LoginController;
@@ -8,9 +9,7 @@ use App\Http\Controllers\ProfessionalController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\OrganisationController;
 use App\Http\Controllers\OtherController;
-use App\Models\CV;
-use App\Models\Other;
-use App\Models\Professional;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,26 +23,48 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('content.index');
-})->middleware('guest');
+Route::group(['middleware' => ['guest']], function () {
+    Route::get('/', function () {
+        return view('content.index');
+    });
 
-Route::post('/register', [RegisterController::class, 'store'])->middleware('guest');
+    Route::post('/register', [RegisterController::class, 'store']);
 
-Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
-Route::post('/login', [LoginController::class, 'authenticate'])->middleware('guest');
+    Route::get('/login', [LoginController::class, 'index'])->name('login');
+    Route::post('/login', [LoginController::class, 'authenticate']);
+});
 
-Route::post('/logout', [LoginController::class, 'logout']);
+Route::group(['middleware' => ['auth', 'rolelevel:1']], function () {
+    Route::post('/logout', [LoginController::class, 'logout']);
 
-Route::get('/home', [CVController::class, 'home'])->middleware('auth');
+    Route::get('/home', [CVController::class, 'home']);
 
-Route::resource('/cv', CVController::class)->middleware('auth');
-Route::put('/cv/education/{id}', [CVController::class, 'updateEducation'])->middleware('auth');
-Route::put('/cv/organisation/{id}', [CVController::class, 'updateOrganisation'])->middleware('auth');
-Route::put('/cv/other/{id}', [CVController::class, 'updateOther'])->middleware('auth');
+    Route::resource('/cv', CVController::class);
+    Route::put('/cv/education/{id}', [CVController::class, 'updateEducation']);
+    Route::put('/cv/organisation/{id}', [CVController::class, 'updateOrganisation']);
+    Route::put('/cv/other/{id}', [CVController::class, 'updateOther']);
 
-Route::resource('/personal', PersonalController::class)->middleware('auth');
-Route::resource('/professional', ProfessionalController::class)->middleware('auth');
-Route::resource('/education', EducationController::class)->middleware('auth');
-Route::resource('/organisational', OrganisationController::class)->middleware('auth');
-Route::resource('/other', OtherController::class)->middleware('auth');
+    Route::resource('/personal', PersonalController::class);
+    Route::resource('/professional', ProfessionalController::class);
+    Route::resource('/education', EducationController::class);
+    Route::resource('/organisation', OrganisationController::class);
+    Route::resource('/other', OtherController::class);
+
+    // export PDF
+    Route::get('cv/export/{id}', [CVController::class, 'export']);
+
+    Route::get('cv/share/{id}', [CVController::class, 'share']);
+});
+
+Route::group(['middleware' => ['auth', 'rolelevel:0']], function () {
+    
+    Route::get('/dashboard', [AdminController::class, 'index']);
+    
+    Route::resource('/admin', AdminController::class);
+});
+
+Route::group(['middleware' => ['auth', 'rolelevel:0,1']], function () {
+    Route::post('/logout', [LoginController::class, 'logout']);
+});
+
+Route::resource('/user', UserController::class);
