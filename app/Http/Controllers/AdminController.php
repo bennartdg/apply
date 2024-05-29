@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CV;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -13,7 +15,14 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view('admin.content.dashboard');
+        $user = User::all();
+        $cv = CV::all();
+
+        return view('admin.content.dashboard',
+        [
+            'cv'=> $cv, 
+            'user' => $user
+        ]);
     }
 
     /**

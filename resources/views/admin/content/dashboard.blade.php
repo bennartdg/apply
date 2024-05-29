@@ -24,7 +24,7 @@
                     <ion-icon class="fs-3" name="people-outline"></ion-icon>
                   </div>
                   <div class="">
-                    <h4 class="m-0">20.000</h4>
+                    <h4 class="m-0">{{$user->count()}}</h4>
                     <small>User Active</small>
                   </div>
                 </div>
@@ -39,7 +39,7 @@
                     <ion-icon class="fs-3" name="document-text-outline"></ion-icon>
                   </div>
                   <div class="">
-                    <h4 class="m-0">20.000</h4>
+                    <h4 class="m-0"></h4>
                     <small>CV Created</small>
                   </div>
                 </div>
