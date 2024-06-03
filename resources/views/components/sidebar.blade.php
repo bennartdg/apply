@@ -14,22 +14,22 @@
             <h5 class="">{{ auth()->user()->first_name }} {{ auth()->user()->last_name }}</h5>
             <p class="text-dark-emphasis">{{ '@' . auth()->user()->username }}</p>
             <small class="d-flex align-items-center">
-              @if (auth()->user()->status == 'experienced')
-                <ion-icon name="briefcase"></ion-icon>
-              @else
+              @if (auth()->user()->status == 'student')
                 <ion-icon name="school"></ion-icon>
+              @else
+                <ion-icon name="briefcase"></ion-icon>
               @endif
               <span class="ms-1 text-capitalize">{{ auth()->user()->status }}</span>
             </small>
           </div>
         </div>
         <hr>
-        <div class="">
+        {{-- <div class="">
           <small class="d-flex align-items-center">
             <ion-icon name="location"></ion-icon>
             <span class="ms-1"></span>
           </small>
-        </div>
+        </div> --}}
         <div class="d-flex flex-column mt-4">
           <button class="btn btn-black" data-bs-toggle="modal" data-bs-target="#edit_profile_modal">Edit
             Profile</button>
@@ -44,12 +44,12 @@
           <img class="rounded-circle img-fluid"
             src="https://miro.medium.com/v2/resize:fill:100:100/1*dmbNkD5D-u45r44go_cf0g.png" width="36"
             height="36" loading="lazy">
+          {{-- <ion-icon name="cog-outline"></ion-icon> --}}
         </a>
         <ul class="dropdown-menu bg-near-black mb-3">
-          <li>
+          <li class="w-100">
             <button type="button" class="btn btn-link link-light text-decoration-none d-flex align-items-center"
               data-bs-toggle="modal" data-bs-target="#logout_modal">
-              <ion-icon name="log-out-outline"></ion-icon>
               <span class="ms-1">Logout</span>
             </button>
           </li>
@@ -166,7 +166,7 @@
                   @endif
                 </select>
               </div>
-              <div class="row mb-3">
+              {{-- <div class="row mb-3">
                 <div class="col-6">
                   <label for="city" class="form-label @error('city') text-danger @enderror text-secondary">
                     City
@@ -187,7 +187,7 @@
                   <input type="text" class="form-control input" id="country" name="country"
                     value="{{ old('country') }}">
                 </div>
-              </div>
+              </div> --}}
               <div class="d-flex justify-content-end mt-5">
                 <a class="btn btn-outline-black px-5" data-bs-dismiss="modal" aria-label="Close">Cancel</a>
                 <input class="btn btn-black px-5 ms-2" type="submit" value="Save Changes" />

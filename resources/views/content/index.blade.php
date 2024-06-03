@@ -1,24 +1,16 @@
 @extends('layout.layout')
 
 @section('content')
-  <div class="container-fluid min-vh-100 bg-black">
+  <div class="container-fluid">
     <div class="row vh-100">
-      <section class="col-lg-8 d-flex flex-column justify-content-end">
-        <div class="d-flex flex-column container-lg-fluid">
-          <h1 class="text-lexend text-big text-dark">
-            build
-          </h1>
-          <h1 class="text-lexend text-big text-dark">your own<span class="text-light">CV</span></h1>
-          <h1 class="text-lexend text-big text-dark">with</h1>
-          <img src="/asset/logo/APPLY-white.png" alt="" class="img-fluid" width="70%">
-        </div>
-      </section>
-      <section class="col-lg-4 d-flex flex-column justify-content-center align-items-center bg-white mt-lg-0 mt-5">
+      @include('content.tagline')
+
+      <section class="col-lg-4 d-flex flex-column justify-content-center align-items-center bg-white mt-lg-0">
         <div class="container-fluid container-lg mt-3">
           <div class="mb-4">
-            <h3 class="text-black m-0">Create new account<span class="text-primary">.</span></h3>
+            <h3 class="text-black m-0">Create new account</h3>
             <small class="text-muted">Already have an account? <a href="/login"
-                class="btn-link text-decoration-none text-primary">Login</a></small>
+                class="btn-link link-dark text-decoration">Login</a></small>
           </div>
           <form action="/register" method="POST">
             @csrf
@@ -31,7 +23,7 @@
                   @enderror
                 </label>
                 <input type="text" class="form-control input @error('first_name') is-invalid @enderror" id="first_name"
-                  name="first_name" value="{{ old('first_name') }}">
+                  name="first_name" value="{{ old('first_name') }}" required>
               </div>
               <div class="col-12 col-lg-6 mt-3 mt-lg-0">
                 <label for="last_name" class="form-label @error('last_name') text-danger @enderror text-secondary">
@@ -41,7 +33,7 @@
                   @enderror
                 </label>
                 <input type="text" class="form-control input @error('last_name') is-invalid @enderror" id="last_name"
-                  name="last_name" value="{{ old('last_name') }}">
+                  name="last_name" value="{{ old('last_name') }}" required>
               </div>
             </div>
             <div class="mb-3">
@@ -52,7 +44,7 @@
                 @enderror
               </label>
               <input type="email" class="form-control input @error('email') is-invalid @enderror" id="email"
-                name="email" value="{{ old('email') }}">
+                name="email" value="{{ old('email') }}" required>
             </div>
             <div class="mb-3 row">
               <div class="col-12 col-lg-6">
@@ -63,7 +55,7 @@
                   @enderror
                 </label>
                 <input type="text" class="form-control input @error('username') is-invalid @enderror" id="username"
-                  name="username" value="{{ old('username') }}">
+                  name="username" value="{{ old('username') }}" required>
               </div>
               <div class="col-12 col-lg-6 mt-3 mt-lg-0">
                 <label for="status" class="form-label @error('status') is-invalid @enderror text-secondary">Status
@@ -98,7 +90,7 @@
                 @enderror
               </label>
               <input type="password" class="form-control input @error('password') is-invalid @enderror" id="password"
-                name="password">
+                name="password" required>
             </div>
             <div class="mb-4">
               <label for="password_confirm"
@@ -108,7 +100,7 @@
                 @enderror
               </label>
               <input type="password" class="form-control input @error('password_confirm') is-invalid @enderror"
-                id="password_confirm" name="password_confirm">
+                id="password_confirm" name="password_confirm" required>
             </div>
             <div class="d-flex flex-column my-4">
               <button type="submit" class="btn btn-black">Create account</button>
@@ -116,7 +108,7 @@
           </form>
         </div>
         <div>
-          <p>Copyright &copy; 2024 Apply-dev</p>
+          <p class="text-body-secondary text-small">Copyright &copy; 2024 Apply-dev</p>
         </div>
       </section>
     </div>

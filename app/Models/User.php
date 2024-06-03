@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -41,4 +42,14 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function getRegistrationMonth()
+    {
+        return Carbon::parse($this->created_at)->format('n'); // Numeric month (1-12 without leading zeros)
+    }
+
+    public function getRegistrationYear()
+    {
+        return Carbon::parse($this->created_at)->format('Y'); // Four-digit year
+    }
 }

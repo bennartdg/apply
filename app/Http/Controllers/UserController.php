@@ -69,7 +69,15 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        return $request;
+        $validateData = $request->validate([
+            'first_name' => 'required|max:255',
+            'last_name' => 'required|max:255',
+            'status' => 'required'
+        ]);
+
+        User::where('id', $user->id)->update($validateData);
+
+        return redirect('/home')->with('success', 'Your profile changes saved!');
     }
 
     /**

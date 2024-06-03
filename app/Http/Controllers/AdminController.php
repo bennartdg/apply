@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\CV;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -18,11 +19,15 @@ class AdminController extends Controller
         $user = User::all();
         $cv = CV::all();
 
-        return view('admin.content.dashboard',
-        [
-            'cv'=> $cv, 
-            'user' => $user
-        ]);
+        
+
+        return view(
+            'admin.content.dashboard',
+            [
+                'cv' => $cv,
+                'user' => $user
+            ]
+        );
     }
 
     /**

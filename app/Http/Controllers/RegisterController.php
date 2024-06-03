@@ -20,7 +20,7 @@ class RegisterController extends Controller
             'password_confirm' => 'required|same:password'
         ]);
 
-
+        $validatedData['level'] = 1;
         $validatedData['password'] = bcrypt($validatedData['password']);
 
         User::create($validatedData);

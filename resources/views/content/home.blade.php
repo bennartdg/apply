@@ -58,9 +58,9 @@
                   <div class="d-flex align-items-center justify-content-between mt-3">
                     <div class="d-flex gap-4">
                       <div class="d-flex">
-                        <a href="/cv/share/{{ $cv->id }}" class="btn link-dark" target="_blank">
+                        {{-- <a href="/cv/share/{{ $cv->id }}" class="btn link-dark" target="_blank">
                           <i class="fa-regular fa-eye fa-lg"></i>
-                        </a>
+                        </a> --}}
                         <a href="/cv/export/{{ $cv->id }}" class="btn link-dark">
                           <i class="fa-regular fa-arrow-down-to-square fa-lg"></i>
                         </a>

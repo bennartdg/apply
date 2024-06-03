@@ -20,11 +20,12 @@
             <div class="card p-2 rounded-4">
               <div class="rounded-3 bg-dark-subtle px-3 py-4">
                 <div class="d-flex align-items-center gap-3">
-                  <div class="d-flex align-items-center justify-content-center rounded-circle bg-white" style="width: 50px; height: 50px">
+                  <div class="d-flex align-items-center justify-content-center rounded-circle bg-white"
+                    style="width: 50px; height: 50px">
                     <ion-icon class="fs-3" name="people-outline"></ion-icon>
                   </div>
                   <div class="">
-                    <h4 class="m-0">{{$user->count()}}</h4>
+                    <h4 class="m-0">{{ $user->count() }}</h4>
                     <small>User Active</small>
                   </div>
                 </div>
@@ -35,11 +36,12 @@
             <div class="card p-2 rounded-4">
               <div class="rounded-3 bg-secondary-subtle px-3 py-4">
                 <div class="d-flex align-items-center gap-3">
-                  <div class="d-flex align-items-center justify-content-center rounded-circle bg-white" style="width: 50px; height: 50px">
+                  <div class="d-flex align-items-center justify-content-center rounded-circle bg-white"
+                    style="width: 50px; height: 50px">
                     <ion-icon class="fs-3" name="document-text-outline"></ion-icon>
                   </div>
                   <div class="">
-                    <h4 class="m-0"></h4>
+                    <h4 class="m-0">{{ $cv->count() }}</h4>
                     <small>CV Created</small>
                   </div>
                 </div>
@@ -50,12 +52,13 @@
             <div class="card p-2 rounded-4">
               <div class="rounded-3 bg-body-secondary px-3 py-4">
                 <div class="d-flex align-items-center gap-3">
-                  <div class="d-flex align-items-center justify-content-center rounded-circle bg-white" style="width: 50px; height: 50px">
+                  <div class="d-flex align-items-center justify-content-center rounded-circle bg-white"
+                    style="width: 50px; height: 50px">
                     <ion-icon class="fs-3" name="cloud-download-outline"></ion-icon>
                   </div>
                   <div class="">
-                    <h4 class="m-0">20.000</h4>
-                    <small>CV Exported</small>
+                    <h4 class="m-0">{{ $cv->sum('export_count') }}</h4>
+                    <small>Times CV Exported</small>
                   </div>
                 </div>
               </div>
@@ -65,7 +68,7 @@
         <div class="row mb-4">
           <div class="col-12 col-lg-8 mb-4">
             <div class="card p-2 rounded-4">
-              <table class="table table-hover">
+              {{-- <table class="table table-hover">
                 <thead>
                   <tr>
                     <th scope="col">#</th>
@@ -94,15 +97,23 @@
                     <td></td>
                   </tr>
                 </tbody>
-              </table>
+              </table> --}}
+              <div class="rounded-3 bg-body-tertiary pb-2">
+                <h6 class="p-3">User Performance</h6>
+                @include('admin.components.line-chart')
+
+                <div id="curve_chart"></div>
+              </div>
             </div>
           </div>
           <div class="col-12 col-lg-4 mb-4">
             <div class="card p-2 rounded-4">
-              <h6 class="p-3">User Status Chart</h6>
-              @include('admin.components.pie-chart')
+              <div class="rounded-3 bg-body-tertiary pb-2">
+                <h6 class="p-3">User Status Chart</h6>
+                @include('admin.components.pie-chart')
 
-              <div id="piechart"></div>
+                <div id="piechart"></div>
+              </div>
             </div>
           </div>
         </div>
